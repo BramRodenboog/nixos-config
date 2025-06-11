@@ -48,6 +48,30 @@
     layout = "us";
     variant = "";
   };
+  services.xserver = {
+     enable = true;
+     windowManager.i3 = {
+	enable = true;
+	package = pkgs.i3-gaps;
+          extraPackages = with pkgs; [
+            dmenu #application launcher most people use
+            i3lock #default i3 screen locker
+            i3status-rust
+            i3-gaps
+            i3lock-fancy
+            rofi
+	];
+     };
+     desktopManager.xfce = {
+          enable= true;
+          noDesktop = true;
+          enableXfwm = false;
+     };
+     displayManager = {
+        lightdm.enable = true;
+        defaultSession = "xfce+i3";
+    };
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.bram = {
@@ -56,7 +80,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
   };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

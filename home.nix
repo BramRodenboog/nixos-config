@@ -19,7 +19,14 @@
   # home.file.".xxx".text = ''
   #     xxx
   # '';
+  home.file."School/.keep".text = "";
+  home.file."Projects/.keep".text = "";
+  home.file."Download/.keep".text = "";
+  home.file."Documents/.keep".text = "";
+  home.file."Music/.keep".text = "";
+  home.file."Pictures/.keep".text = "";
 
+ 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     # here is some command line tools I use frequently
